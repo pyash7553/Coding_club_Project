@@ -1,0 +1,47 @@
+.greet{
+    color: white;
+    margin-top: 0px;
+    font-size: 350%;
+    /* padding-left: 8vh; */
+    padding-top: 3vh;
+}
+
+.greetName:hover{
+    color: rgb(255, 0, 0);
+    cursor: pointer;
+}
+
+.greetmain{
+    position: relative;
+    /* margin-top: 10vh; */
+}
+
+.Notify{
+    height: fit-content;
+    width: fit-content;
+    margin-bottom: 6vh;
+    background-color: rgba(101, 42, 143,0.8);
+    border-radius: 10px;
+    border: none;
+    z-index: 5;
+    display: flex;
+    justify-content: right;
+    
+    position: absolute; 
+    right: 10vh;
+    top: 6vh;
+    
+}
+
+.Notify:hover{
+    /* background-color: rgb(103, 13, 168); */
+    cursor: pointer;
+}
+
+.NotifyImg{
+    position: relative;
+    top: 0px;
+    right: 0px;
+    width: 50px;
+    height: 50px;
+}

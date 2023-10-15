@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+
+
+*{
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+.projectmain{
+    padding: 15px;
+}
+.projdisplay{
+    width: 100%;
+    height: 100%;
+    background-color: gray;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.projdispheader{
+    
+    display: flex;
+    column-gap: 120px;
+}
+
+.projdispheader h1{
+    margin: 10px 0px 10px 0px;
+    font-weight: 500;
+    font-size: 2.5rem;
+}
+.projdispheader p{
+    margin: 5px 0px 5px 0px;
+}
+
+.projdispbutton{
+    padding: 5px 10px 5px 10px;
+    margin-top: 10px;
+    background: #0c73e2;
+    border: 0ch;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    
+}
+.projdispbutton:hover{
+    background-color: #0958ac;
+}
+
+.projlink{
+    margin-top: 30px;
+}
+
+.projdispheader img{
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+}
+
+.video_info{
+    margin-top: 40px;
+    display: none;
+}
+
+.video_info video{
+    width: 600px;
+    height: 400px;
+    float: left;
+    margin: 0px 20px 20px 0px;
+}
+
+.teaminfo{
+    margin-top: 30px;
+}
+
+.teaminfo li{
+    list-style: none;
+}
+
+.ProjectLink{
+    text-decoration: none;
+    color: white;
+    background-color: #0c73e2;
+    padding: 5px 20px 8px 18px;
+    border-radius: 8px;
+    border: 0cap;
+    margin-top: 5px;
+}
+
+@media only screen and (max-width: 300px) {
+    .projdispheader{
+        flex-direction: column;
+    }
+    .projdispheader img{
+        width: 230px;
+        height: 230px;
+    }
+    .video_info video{
+        width: 100%;
+        height: 100%;
+    }
+
+}

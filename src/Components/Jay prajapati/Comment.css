@@ -1,0 +1,55 @@
+.c_class{
+    color: white;
+    background-color: rgb(40, 40, 40);
+    margin: 0vw 2vw 0vw 2vw;
+    /* padding-left: 4vw; */
+    /* border-radius: 2vw 2vw 0 0; */
+    border: 1px solid teal;
+    text-align: justify;
+}
+
+#com_div{
+    margin: 1vw;
+    font-size: 1.3vw;
+}
+
+#commenter{
+    display: flex;
+    margin: 1vw;
+    margin-top: 0;
+    /* border: 1px solid salmon; */
+}
+
+#pfp_div{
+    height: 8vh;
+    width: 8vh;
+    border-radius: 4vh;
+    border: 1px solid white;
+    margin: 0.5vw;
+}
+#pfpic{
+    height: 8vh;
+    width: 8vh;
+}
+#commenter_id{
+    font-size: 2vw;
+    /* border: 1px solid maroon; */
+    margin: 1vw;
+    color: white;
+}
+
+#upvote_div, #comment_div{
+    margin: 1vw;
+}
+
+#date_div{
+    margin: 1vw;
+    position: absolute;
+    float: right;
+    right: 2vw;
+}
+
+#feed_bar{
+    border-top: 1px solid teal;
+    font-size: 1.6vw;
+}

@@ -1,0 +1,471 @@
+section {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%; 
+    flex-wrap: wrap;
+    background-color: #000000;
+    gap: 2.5px;
+    overflow: hidden;
+}
+
+section::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(black, #db00ef, black);
+    animation: animate 6s linear infinite;
+}
+@keyframes animate {
+    0%{
+        transform: translateY(-100%);
+    }
+    100%{
+        transform: translateY(100%);
+    }
+}
+section span {
+    position: relative;
+    display: block;
+    width: calc(5.475vw);
+    height: calc(5vw - 1px);
+    background: #000000;
+    z-index: 1;
+    transition: 1.5s;
+}
+section span:hover {
+    background: #db00ef;
+    transition: 0s;
+}
+
+section .signup {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    width: 25%;
+    justify-content: center;
+    background: rgb(34, 34, 34);
+    padding: 30px 30px 28px 30px;
+    border-radius: 50px;
+    border: 2.5px solid #ea00ff;
+    box-shadow: 0 0 40px #db00ef;
+    z-index: 2;
+}
+section .container
+{ 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 75%;
+}
+section .container h2 {
+    font-family:'Times New Roman', Times, serif;
+    /* text-transform: uppercase; */
+    font-size: 35px;
+    color: rgb(194, 194, 194);
+    margin-bottom: 5%;
+    padding-bottom: 10.5%;
+}
+section .container .form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 6%;
+    gap: 32px;
+}
+section .container .form .inputbox {
+    position: relative;
+    width: 100%;
+    color: #ffffff;     
+}
+section .container .form .inputbox input {
+    width: 100%;
+    box-sizing: border-box;
+    background-color: #333;
+    /* outline: #cb3131; */
+    font-size: 17.5px;
+    color: #ffffff;
+    padding: 15px 17px 13px 17px;
+    border-radius: 20px;
+    border: 2px solid #db00ef;
+}
+
+section .container .form .inputbox #g_year {
+    width: 100%;
+    box-sizing: border-box;
+    background-color: #333;
+    /* outline: #cb3131; */
+    font-size: 17.5px;
+    color: #ffffff;
+    padding: 15px 17px 13px 17px;
+    border-radius: 20px;
+    appearance: none;
+    background-image: url(/public/images/options-expand-arrow.png);
+    background-repeat: no-repeat;
+    background-size: 6% 35%;
+    background-position: 95%;
+    border: 2px solid #db00ef;
+}
+
+section .container .form .inputbox #dept {
+    width: 100%;
+    box-sizing: border-box;
+    background-color: #333;
+    /* outline: #cb3131; */
+    font-size: 17.5px;
+    color: #ffffff;
+    padding: 15px 17px 13px 17px;
+    border-radius: 20px;
+    appearance: none;
+    background-image: url(/public/images/options-expand-arrow.png);
+    background-repeat: no-repeat;
+    background-size: 6% 35%;
+    background-position: 95%;
+    border: 2px solid #db00ef;
+}
+
+
+section .container .form .backbox input {
+    width: 45%;
+    /* box-sizing: border-box; */
+    float: left;
+    text-transform: uppercase;
+    background-color: transparent;
+    border: 2px solid #db00ef;
+    font-size: 19px;
+    color: #ffffff;
+    padding: 12px;
+    border-radius: 20px;
+    /* border: 2px solid #db00ef; */
+}
+section .container .form .backbox input:hover {
+    background-color: #db00ef;
+    padding: 12px 5px 12px 18px;
+    background-image: url(/public/images/back-slide.png);
+    background-repeat: no-repeat;
+    background-size: 20% 50%;
+    background-position: 16px;
+}
+section .container .form .signupbox input {
+    width: 45%;
+    /* box-sizing: border-box; */
+    float: right;
+    text-transform: uppercase;
+    background-color: transparent;
+    border: 2px solid #db00ef;
+    font-size: 19px;
+    color: #ffffff;
+    padding: 12px;
+    border-radius: 20px;
+    /* border: 2px solid #db00ef; */
+}
+section .container .form .signupbox input:hover {
+    background-color: #db00ef;
+    padding: 12px 18px 12px 5px;
+    background-image: url(/public/images/next-slide.png);
+    background-repeat: no-repeat;
+    background-size: 20% 50%;
+    background-position: 79px;
+}
+
+section .container .form .inputbox label {
+    position: absolute;
+    color: #aaa;
+    margin-left: 17px;
+    top: 22%;
+    left: 0;
+    font-size: 20px;
+    pointer-events: none;
+    font-style: normal;
+    transition: 0.6s;
+    z-index: 4;
+}
+section .container .form .inputbox input:valid ~label,
+section .container .form .inputbox input:focus ~label {
+    transform: translateY(-29px);
+    font-size: 18.5px;
+    background-color: rgb(34, 34, 34);
+    background-image: none;
+    padding-left: 7px;
+    padding-right: 7px;
+    padding-bottom: 2px;
+    border-radius: 10px;
+}
+
+section span {
+    border: 2px solid rgb(0, 0, 0);
+}
+
+.trackbar {
+    width: 33%;
+    height: 100%;
+    margin-top: 3.5%;
+    background-color: bisque;
+}
+#firstbar {
+    transform: skew(-45deg);
+    background-color: #db00ef;
+}
+#secondbar {
+    transform: skew(-45deg);
+    background-color: #db00ef;
+}
+
+@media (max-width: 500px) {
+
+    section {
+        font-size: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    section::before {
+        background: linear-gradient( black 50%, #db00ef, black);
+        animation: animate 6s linear infinite;
+    }
+    @keyframes animate {
+        0% {
+            transform: translateY(-100%);
+        }
+        100% {
+            transform: translateY(40%);
+        }
+    }
+    
+    section span {
+        width: calc(16vw - 4.2px);
+        height: calc(16vw);
+    }
+    section .signup {
+        width: 57%;
+        top: 13%;
+    }
+
+    section .container {
+        width: 100%;
+    }
+
+    section .container .form .inputbox input {
+        height: 90%;
+        border: 1px solid #db00ef;
+    }
+    section .container .form .inputbox label {
+        top: 22%;
+    }
+
+    section .container .form .inputbox input:valid ~label,
+    section .container .form .inputbox input:focus ~label {
+        transform: translateY(-25.5px);
+    }
+
+    section .container .form {
+        gap: 23px;
+    }
+    section .container h2 {
+        font-size: 30px;
+        margin-bottom: 5.7%;
+    }
+}
+
+@media (min-width:501px) and (max-width:650px) {
+    
+    section {
+        font-size: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    section::before {
+        width: 155%;
+        background: linear-gradient( black 40%, #db00ef, black);
+        animation: animate 5s linear infinite;
+    }
+    @keyframes animate {
+        0%{
+            transform: translateY(-90%)
+        }
+        100%{
+            transform: translateY(55%)
+        }
+    }
+
+    section span {
+        width: calc(13vw + 1px);
+        height: calc(12vw + 2.8px);
+    }
+
+    section .signup {
+        width: 35%;
+        top: 18%;
+    }
+    
+    section .container {
+        width: 85%;
+        margin-bottom: 3%;
+    }
+    
+    section .container .form {
+        gap: 30px;
+    }
+}
+
+@media (min-width:651px) and (max-width:800px) {
+    
+    section {
+        font-size: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    section::before {
+        width: 155%;
+        background: linear-gradient( black 30%, #db00ef, black);
+        animation: animate 5s linear infinite;
+    }
+    @keyframes animate {
+        0%{
+            translate: -70% -70%;
+        }
+        100%{
+            translate: 55% 55%;
+        }
+    }
+
+    section span {
+        width: calc(9vw + 1.7px);
+        height: calc(9vw + 1px);
+    }
+
+    section .signup {
+        width: 45%;
+        top: 14.5%;
+        display: flex;
+        align-items: center;
+        justify-content: center
+    }
+    
+    section .container {
+        width: 85%;
+        margin-bottom: 3%;
+    }
+    
+    section .container .form {
+        gap: 30px;
+    }
+}
+
+@media (min-width:800px) and (max-width:1024px) {
+    
+    section {
+        font-size: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    section::before {
+        width: 155%;
+        background: linear-gradient( black 50%, #db00ef, black);
+        animation: animate 6s linear infinite;
+    }
+
+    section span {
+        width: calc(8vw - 2.8px);
+        height: calc(8vw - 2px);
+    }
+    
+    section .signup {
+        width: 35%;
+        top: 15%;
+        display: flex;
+        align-items: center;
+        justify-content: center
+    }
+
+    section .container {
+        width: 80%;
+        margin-bottom: 3%;
+    }
+
+    section .container .form {
+        gap: 30px;
+    }
+}
+
+@media (min-width:1025px) and (max-width:1200px) {
+    
+    section {
+        font-size: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    section::before {
+        width: 155%;
+        background: linear-gradient( black 50%, #db00ef, black);
+        animation: animate 6s linear infinite;
+    }
+
+    section span {
+        width: calc(7vw - 4.5px);
+        height: calc(7vw - 2px);
+    }
+    
+    section .signup {
+        width: 30%;
+        top: 14.5%;
+        display: flex;
+        align-items: center;
+        justify-content: center
+    }
+
+    section .container {
+        width: 80%;
+        margin-bottom: 3%;
+    }
+
+    section .container .form {
+        gap: 30px;
+    }
+}
+
+@media (min-width:1201px) and (max-width:1376px) {
+    
+    section {
+        font-size: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    section::before {
+        width: 155%;
+        background: linear-gradient( black 50%, #db00ef, black);
+        animation: animate 6s linear infinite;
+    }
+
+    section span {
+        width: calc(6vw - 3px);
+        height: calc(6vw - 3px);
+    }
+
+    section .signup {
+        width: 27%;
+        top: 14.5%;
+        display: flex;
+        align-items: center;
+        justify-content: center
+    }
+
+    section .container {
+        width: 82%;
+        margin-bottom: 3%;
+    }
+
+    section .container .form {
+        gap: 30px;
+    }
+
+}

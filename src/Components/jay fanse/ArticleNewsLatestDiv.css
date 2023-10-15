@@ -1,0 +1,40 @@
+.ArticleNewsLatestDiv{
+    position: relative;
+    padding: 40px 100px;
+    /* border: 2px solid orange; */
+    background-color: rgb(105, 56, 120);
+    /* box-shadow: 5px 5px 15px rgb(156, 71, 156); */
+
+    /* transition: all 2s; */
+}
+
+.LatestHeading{
+    display: flex;
+    color: white;
+    font-size: 7vh;
+    /* border: 2px solid fuchsia; */
+    justify-content: center;
+    margin-bottom: 50px;
+}
+
+.showMoreDiv{
+    /* border: 2px solid yellow; */
+    display: flex;
+    margin: auto;
+    width: 100%;
+    justify-content: center;
+    position: absolute;
+    bottom: -3vh;
+    left: 0px;
+}
+
+.showMoreBtn{
+    height: 6vh;
+    width: 6vh;
+    border-radius: 50vh;
+    border: 2px solid #2D033B;
+    color: white;
+    background-color: #693878;
+
+}
+

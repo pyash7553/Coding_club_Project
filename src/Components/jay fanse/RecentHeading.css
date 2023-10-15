@@ -1,0 +1,32 @@
+.recentHeading h1{
+    color: white;
+    font-size: 230%;
+    margin-top: 60px;
+}
+
+.recentHeading{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 94%;
+    margin-bottom: 20px;
+}
+
+.recentHeadingButton{
+    font-size: 120%;
+    height: fit-content;
+    width: fit-content;
+    color: white;
+    border: 2px solid white;
+    background-color: #2D003B;
+    padding: 10px 10px;
+    align-self: flex-end;
+    border-radius: 8px;
+}
+
+.recentHeadingButton:hover{
+    cursor: pointer;
+    color: orangered;
+    border: 2px solid orangered;
+
+}

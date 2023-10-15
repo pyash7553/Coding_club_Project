@@ -1,0 +1,103 @@
+.q_class{
+    color: white;
+    background-color: rgb(20, 20, 20);
+    margin: 2vw;
+    margin-bottom: 0;
+    border-radius: 2vw 2vw 0 0;
+    border: 1px solid teal;
+    text-align: justify;
+}
+
+#reply_head{
+    margin: 0 2vw;
+    background-color:rgb(40, 40, 40);
+    padding: 1vw;
+    color: white;
+    font-family: 'Trebuchet MS';
+    font-size: 2vw;
+}
+
+.snippet{
+    background-color: rgb(19, 42, 42);
+    margin: 1vw;
+    padding: 1vw;
+    border-radius: 1vh;
+    font-size: 2vw;
+}
+
+#Que_statement{
+    margin: 1vw;
+    font-size: 2.4vw;
+}
+
+#des_div{
+    margin: 1vw;
+    font-size: 1.5vw;
+}
+
+#asker{
+    display: flex;
+    /* border: 1px solid salmon; */
+}
+
+#pfp_div{
+    height: 8vh;
+    width: 8vh;
+    border-radius: 4vh;
+    border: 1px solid white;
+    margin: 0.5vw;
+}
+#pfpic{
+    height: 8vh;
+    width: 8vh;
+}
+#asker_id{
+    font-size: 2vw;
+    /* border: 1px solid maroon; */
+    margin: 1vw;
+    color: white;
+}
+
+#upvote_div, #comment_div{
+    margin: 1vw;
+    box-sizing: border-box;
+}
+
+#date_div{
+    margin: 1vw;
+    position: absolute;
+    float: right;
+    right: 2vw;
+}
+
+#com_button{
+    background: transparent;
+    color: white;
+    font-family: 'Trebuchet MS';
+    border: 1px solid transparent;
+    border-radius: 1vw;
+    font-size: 1.5vw;
+}
+
+#com_button:hover{
+    background: transparent;
+    color: white;
+    font-family: 'Trebuchet MS';
+    border: 0.02vh solid white;
+    border-radius: 1vw;
+    font-size: 1.5vw;
+}
+
+#feed_bar{
+    border-top: 1px solid teal;
+    font-size: 1.6vw;
+}
+
+#asker{
+    margin: 1vw;
+}
+
+.upvote-button{
+    background: transparent;
+    border: none;
+}

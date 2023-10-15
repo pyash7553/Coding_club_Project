@@ -1,0 +1,72 @@
+.BookElement{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    border: 4px solid rgb(0, 0, 0);
+    border-radius: 20px;
+    background-color: rgb(113, 16, 16);
+    padding: 30px;
+    margin: 0px auto;
+    box-shadow: 12px 12px 0px blanchedalmond;
+    transition: all 0.3s;
+}
+
+.BookElement:hover{
+    scale: 1.02;
+}
+/* 
+.BookElement:active{
+    box-shadow: none;
+    margin-left: 12px;
+    margin-top: 12px;
+} */
+
+.BookElement img{
+    width: 100%;
+    border-radius: 15px;
+}
+
+.BookImageDiv{
+    display: flex;
+    margin: auto;
+}
+
+.BookElementTitle{
+    /* border: 2px solid lime; */
+    color: white;
+    width: 100%;
+    /* font-size: 2.5rem; */
+    font-size: 4vh;
+}
+
+.BookElementInfo{
+    position: relative;
+    /* border: 2px solid lime; */
+    /* background-image: linear-gradient(gray 40%,white); */
+    color: white;
+    margin-top: 10px;
+    /* height: 10vh; */
+    width: 100%;
+    /* font-size: 1.5rem; */
+    font-size: 2.2vh;
+    text-align: justify;
+    overflow: hidden;
+}
+
+/* .BookInfoGradient{
+    border: 2px solid yellow;
+    position: absolute; 
+    background-image: linear-gradient(transparent 60%, #2D033B);
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+} */
+
+.BookElementBy{
+    /* border: 2px solid lime; */
+    color: white;
+    margin-top: 10px;
+    width: 100%;
+    /* font-size: 1.5rem; */
+    font-size: 2vh;
+}
