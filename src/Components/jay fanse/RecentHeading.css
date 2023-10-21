@@ -17,9 +17,9 @@
     height: fit-content;
     width: fit-content;
     color: white;
+    padding: 10px;
     border: 2px solid white;
     background-color: #2D003B;
-    padding: 10px 10px;
     align-self: flex-end;
     border-radius: 8px;
 }
@@ -28,5 +28,4 @@
     cursor: pointer;
     color: orangered;
     border: 2px solid orangered;
-
 }

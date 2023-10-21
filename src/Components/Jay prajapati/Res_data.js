@@ -1,81 +1,173 @@
+import React, { useEffect } from "react";
 import Card from './Res_Card.js'
-// import "/images/java.png" from './image/java.png'
+import { useState } from "react";
 
-const resArr = [
-    {
-        resimg: "/images/java.png",
-        topic: "Java",
-        n_count: 10,
-        vd_count: 8,
-        b_count: 5,
-        qp_count: 6,
-        sub_link: "rescontent?subject=java"
-    },
-    {
-        resimg: "/images/java.png",
-        topic: "Java",
-        n_count: 10,
-        vd_count: 8,
-        b_count: 5,
-        qp_count: 6,
-        sub_link: "#"
-    },
-    {
-        resimg: "/images/java.png",
-        topic: "Java",
-        n_count: 10,
-        vd_count: 8,
-        b_count: 5,
-        qp_count: 6,
-        sub_link: "#"
-    },
-    {
-        resimg: "/images/java.png",
-        topic: "Java",
-        n_count: 10,
-        vd_count: 8,
-        b_count: 5,
-        qp_count: 6,
-        sub_link: "#"
-    },
-    {
-        resimg: "/images/java.png",
-        topic: "Java",
-        n_count: 10,
-        vd_count: 8,
-        b_count: 5,
-        qp_count: 6,
-        sub_link: "#"
-    },
-    {
-        resimg: "/images/java.png",
-        topic: "Java",
-        n_count: 10,
-        vd_count: 8,
-        b_count: 5,
-        qp_count: 6,
-        sub_link: "#"
-    }
-]
+function ResourceGenerator(userID) {
+   
+    const [V,setVar] = useState([]);
+    useEffect(() => {
+        fetch('/resources')
+            .then(response => response.json())
+            .then(response => {
+                console.log("This is Jay's Server");
+                console.log(response[0]);
+                setVar(response);
+            });
+    }, []);
 
-function resouorceGenerator(){
+
     function subjectGenerator(props){
-        return (
-            <Card
-                resimg = {props.resimg}
-                topic = {props.topic}
-                n_count = {props.n_count}
-                vd_count = {props.vd_count}
-                b_count = {props.b_count}
-                qp_count = {props.qp_count}
-                sub_link = {props.sub_link}
-            />
+        // {const lg = }
+    return (
+
+        <Card
+        resimg = {props.logo}
+        topic = {props.subject}
+        n_count = {props.notes[0]}
+        vd_count = {props.videos[0]}
+        b_count = {props.books[0]}
+        // qp_count = {props.qp_count}
+        sub_link = {`rescontent?subject=${props.subject}`}
+        />
         )
     }
 
+
+    console.log("outside");
+    console.log(V);
     return (
-        resArr.map(subjectGenerator)
-    )
+        <>
+             {V.map(subjectGenerator)}
+        </>
+    );
 }
 
-export default resouorceGenerator
+export default ResourceGenerator;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// // // // import { useEffect } from "react";
+//     import cardimg from './res/java.png'
+
+// import Card from './Res_Card.js'
+// import React from "react";
+
+// const resArr = [
+//     {
+//         resimg: cardimg,
+//         topic: "Java",
+//         n_count: 10,
+//         vd_count: 8,
+//         b_count: 5,
+//         qp_count: 6,
+//         sub_link: "Java"
+//     },
+//     {
+//         resimg: cardimg,
+//         topic: "Java",
+//         n_count: 10,
+//         vd_count: 8,
+//         b_count: 5,
+//         qp_count: 6,
+//         sub_link: "#"
+//     },
+//     {
+//         resimg: cardimg,
+//         topic: "Java",
+//         n_count: 10,
+//         vd_count: 8,
+//         b_count: 5,
+//         qp_count: 6,
+//         sub_link: "#"
+//     },
+//     {
+//         resimg: cardimg,
+//         topic: "Java",
+//         n_count: 10,
+//         vd_count: 8,
+//         b_count: 5,
+//         qp_count: 6,
+//         sub_link: "#"
+//     },
+//     {
+//         resimg: cardimg,
+//         topic: "Java",
+//         n_count: 10,
+//         vd_count: 8,
+//         b_count: 5,
+//         qp_count: 6,
+//         sub_link: "#"
+//     },
+//     {
+//         resimg: cardimg,
+//         topic: "Java",
+//         n_count: 10,
+//         vd_count: 8,
+//         b_count: 5,
+//         qp_count: 6,
+//         sub_link: "#"
+//     }
+// ]
+
+
+// function resouorceGenerator(){
+    
+//         // useEffect(()=>{
+//         //     fetch('/resources').then(response=>response.json()).then(response =>{
+            
+//         //         console.log("This is Jay's Server");
+//         //         console.log(response);
+//         //     });
+        
+//         // },[]);
+
+        
+
+
+
+    
+//         return (
+//             // "This"
+//             )
+//         }
+        
+//         export default resouorceGenerator
+        
+
+
+
+
+
+
+
+
+
+
+
+// // // // import docs from './json_files/Res_backend.js'
+
+
+
+
+

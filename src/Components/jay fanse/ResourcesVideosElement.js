@@ -6,7 +6,7 @@ function ResourcesVideosElement(props) {
     <a className="ResourcesVideosAnchor" href={props.thumbnail}>
     <div className="ResourcesVideosElement">
       <div className="ResourcesVideosThumbnail">
-      <iframe src={props.thumbnail} title="YouTube video player" 
+      <iframe src={props.link} title="YouTube video player" 
       height="200vh" width="360vh"
       frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
       </div>

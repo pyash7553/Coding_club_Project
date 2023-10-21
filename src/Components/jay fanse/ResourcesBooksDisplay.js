@@ -1,13 +1,19 @@
-import React from 'react'
+import React, { useState } from 'react'
 import "./ResourcesBooksDisplay.css"
 import ResourcesBookElement from './ResourcesBookElement'
 import ResourcesBookInfo from './ResourcesBookInfo'
 
-function ResourcesBooksDisplay() {
+function ResourcesBooksDisplay(props) {
+
+  const booksLen = props.books.length;
+  const bgStyle = {
+    backgroundImage : "none",
+    height : "fit-content"
+  }
 
     function addBooks(BookElement){
         return <ResourcesBookElement 
-        url = {BookElement.url}
+        thumbnail = {BookElement.thumbnail}
         title = {BookElement.title}
         edition = {BookElement.edition}
         author = {BookElement.author}
@@ -15,8 +21,8 @@ function ResourcesBooksDisplay() {
     }
 
   return (
-    <div className='ResourcesBooksDisplay'>
-        {ResourcesBookInfo.map(addBooks)}
+    <div className='ResourcesBooksDisplay' style={booksLen!=0 ? bgStyle : null}>
+        {props.books.map(addBooks)}
     </div>
   )
 }

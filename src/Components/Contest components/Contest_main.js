@@ -45,8 +45,9 @@ export default function Contest_main() {
 
     return (
 
-
+        
         <div className="contest_main">
+            {/* {console.log("ok")} */}
             <Navbar_after_login/>
             <div className="contest_heading"><p>Codeing Contest</p></div>
 

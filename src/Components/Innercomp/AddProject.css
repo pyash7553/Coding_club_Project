@@ -1,0 +1,62 @@
+*{
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+}
+
+.AddProject{
+    position: absolute;
+    width: 60vw;
+    margin-left: 20vw;
+    justify-content: center;
+    background-color: #710ec9;
+    color: white;
+    padding: 20px;
+    top: 30px;
+    display: none;
+}
+
+.AddProject h1{
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.addpro_close{
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    right: 20px;
+    border: 1.5px solid black;
+    border-radius: 4px;
+    padding: 1px;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.addpro_close:hover{
+    scale: 1.05;
+}
+
+.addpro_close img{
+    width: 100%;
+}
+
+.addprospace{
+    margin: 15px 20px;
+    font-size: 1.2rem;
+}
+
+.AddProject input{
+    width: 100%;
+}
+.AddProject label{
+    margin-right: 30px;
+}
+
+#addproject{
+    border: 0ch;
+    padding: 4px 5px;
+    border-radius: 2px;
+    cursor: pointer;
+}

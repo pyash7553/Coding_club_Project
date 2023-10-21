@@ -17,12 +17,14 @@ function RecentTasksCards(props) {
   }
   colorSelect();
   return (
+    <a href={props.link} target='_blank'>
     <div className='recentCards' style={colorStyles}>
         <span className='Heading'>{props.heading}</span>
-        <span className='subHeading'>{props.subheading}</span>
+        <span className='subHeading'>Start date : {props.subheading}</span>
         <button className='cardButton'>{props.button}</button>
-        <img className='cardIcon' src={props.icon}alt="alt"/>
+        <img className='cardIcon' src="/images/bulbimage.png" alt="alt"/>
     </div>
+    </a>
   )
 }
 

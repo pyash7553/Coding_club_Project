@@ -9,4 +9,8 @@
     padding: auto;
     grid-template-columns: repeat(3,1fr);
     overflow: auto;
+    background-image: url(/public/images/profileProjects.png);
+    background-position: center center;
+    background-repeat: no-repeat;
+    height: 100%;
 }

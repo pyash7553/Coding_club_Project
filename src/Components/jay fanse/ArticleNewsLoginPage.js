@@ -1,20 +1,16 @@
 import React from 'react'
-import "./ArticlesNewsMore.css"
+import "./ArticleNewsLoginPage.css"
 import ArticleNewsMoreElement from './ArticleNewsMoreElement'
 import ArticleContentInfo from './ArticleContentInfo'
 import NewsContentInfo from './NewsContentInfo';
 
-function ArticlesNewsMore(props) {
+function ArticlesNewsLoginPage(props) {
 
   var toModifyArray = props.isArticleSelected ? [...ArticleContentInfo] : [...NewsContentInfo];
   const ContentInfoReverse = toModifyArray.reverse();
   var MoreContentInfo = ContentInfoReverse.slice(2,5);
 
-  var moreNews = (props.news.slice(2,5));
-  if(props.more === true)
-  {
-    moreNews = (props.news).slice(2,);
-  }
+  var moreNews = (props.news.slice(0,3));
 
   function AddContent(ContentItem){
     
@@ -28,11 +24,11 @@ function ArticlesNewsMore(props) {
   }
 
   return (
-    <div className='ArticleNewsMore'>
+    <div className='ArticleNewsLoginPage'>
         {moreNews.map(AddContent)}
 
     </div>
   )
 }
 
-export default ArticlesNewsMore
+export default ArticlesNewsLoginPage

@@ -3,8 +3,14 @@ import ResourcesNotesElement from "./ResourcesNotesElement"
 import ResourcesNotesInfo from "./ResourcesNotesInfo"
 import "./ResourcesNotesDisplay.css"
 
-function ResourcesNotesDisplay() {
+function ResourcesNotesDisplay(props) {
   
+    const notesLen = props.notes.length;
+    const bgStyle = {
+        backgroundImage : "none",
+        height : "fit-content"
+    }
+
     function addNotes(NoteElement){
         return <ResourcesNotesElement 
         title = {NoteElement.title}
@@ -14,8 +20,8 @@ function ResourcesNotesDisplay() {
   
     return (
 
-    <div className='ResourcesNotesDisplay'>
-        {ResourcesNotesInfo.map(addNotes)}
+    <div className='ResourcesNotesDisplay' style={notesLen!=0 ? bgStyle : null}>
+        {props.notes ? props.notes.map(addNotes) : null}
     </div>
   )
 }

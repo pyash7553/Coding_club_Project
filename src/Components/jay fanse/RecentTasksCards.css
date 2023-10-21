@@ -27,11 +27,13 @@
     /* border: 2px solid green; */
     display: flex;
     flex-wrap: wrap;
+    z-index: 2;
 }
 
 .subHeading{
     font-size: 1.3rem;
     position: absolute;
+
     bottom: 4vh;
     left: 3vh;
     width: 60%;
@@ -65,9 +67,9 @@
 .cardIcon{
     position: absolute;
     /* border: 2px solid red; */
-    height: 40%;
-    width: 25%;
-    top: 25%;
-    left: 68%;
-    z-index: 2;
+    height: 50%;
+    width: 35%;
+    top: 15%;
+    left: 65%;
+    z-index: 0;
 }

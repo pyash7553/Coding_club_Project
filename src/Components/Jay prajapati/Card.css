@@ -4,19 +4,20 @@
 .card{
     margin: 2vw;
     background-color: transparent !important;
-    border: 3px solid rgb(53, 173, 233);
+    border: 0.3vw solid rgb(53, 173, 233);
+    border-radius: 1vw;
     /* background-color: aqua; */
     box-shadow: 0px 0px 1vw rgb(239, 90, 139);
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    height: 180px;
-    width: 340px;
+    height: 28vh;
+    width: 25vw;
 }
 .card:hover{
     margin: 2vw;
     background-color: transparent !important;
-    border: 3px solid rgb(53, 173, 233);
-    height: 180px;
-    width: 340px;
+    border: 0.3vw solid rgb(53, 173, 233);
+    height: 28vh;
+    width: 25vw;
     box-shadow: 0px 0px 3vw rgb(239, 90, 139);
     transform: scale3d(1.01,1.01,1.01);
 }
@@ -39,13 +40,13 @@ a{
     color: aliceblue;
 }
 .lg{
-    height: 80px;
-    width: 80px;
+    height: 6vw;
+    width: 6vw;
     border: 1px solid white;
-    border-radius: 5px;
+    border-radius: 1vw;
     background-color: blueviolet;
-    box-shadow: 0px 0px 15px magenta;
-    padding: 10px;
+    box-shadow: 0px 0px 1vw magenta;
+    padding: 0.5vw;
     position: absolute;
     top: 7vh;
     left: -3vw;

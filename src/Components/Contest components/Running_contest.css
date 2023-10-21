@@ -33,7 +33,7 @@
 }
 
 .contest_start_btn button{
-    color: rgb(102, 7, 191);
+    
     background: white;
     border: 0;
     border-radius: 5px;
@@ -45,6 +45,7 @@
 
 .contest_start_btn a{
     text-decoration: none;
+    color: rgb(102, 7, 191);
 }
 
 .contest_start_btn button:hover{

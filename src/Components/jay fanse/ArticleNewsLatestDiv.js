@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-// import axios from 'axios';
 import ArticleNewsLatestElement from './ArticleNewsLatestElement';
 import "./ArticleNewsLatestDiv.css"
 import ArticlesNewsMore from './ArticlesNewsMore';
@@ -8,41 +7,45 @@ import NewsContentInfo from './NewsContentInfo';
 // import downArrow from "../images/down_arrow.png"
 // import upArrow from "../images/up_arrow.png"
 
-// const options = {
-//   method: 'GET',
-//   url: 'https://article-extractor-and-summarizer.p.rapidapi.com/extract',
-//   params: {
-//     url: 'https://time.com/6266679/musk-ai-open-letter/'
-//   },
-//   headers: {
-//     'X-RapidAPI-Key': '7e3dd74e1fmshabbd84e907741dcp1a97e9jsn42bb8fcd15fd',
-//     'X-RapidAPI-Host': 'article-extractor-and-summarizer.p.rapidapi.com'
-//   }
-// };
 
 function ArticleNewsLatestDiv(props) {
 
-  var ArticlesApiInfo=[];
+  const [news,setNews]=useState([]);
 
-//   useEffect( () => {
-//     axios.request(options).then(function(response){
-//       console.log(response);
-//       // ArticlesApiInfo = response.data;
-//       // console.log(ArticlesApiInfo);
-//     }).catch(function(err){
-//       console.log(err);
-//     });
-// },[]);
+  useEffect(() => {
+    props.isArticleSelected==false ? 
 
-
-  var type = props.isArticleSelected ? "Articles" : "News";
+    fetch("https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=876ed1ab1a2545c18ffdb151c871e344")
+      .then(response => response.json())
+      .then(
+          (quote) => {
+            // console.log(quote);
+            setNews(quote.articles);
+            console.log(quote.articles);
+      })
+      :
+      fetch("https://newsapi.org/v2/everything?q=apple&from=2023-10-19&to=2023-10-19&sortBy=popularity&apiKey=876ed1ab1a2545c18ffdb151c871e344")
+      .then(response => response.json())
+      .then(
+          (quote) => {
+            // console.log(quote);
+            setNews(quote.articles);
+            console.log(quote.articles);
+      })
+  }, [props.isArticleSelected])
 
   
-  const [Panel1,Panel2] = 
+
+  var type = props.isArticleSelected ? "Articles" : "News";
+  var [Panel1,Panel2] = [];
+
+  if(news.length!==0)
+  {
+  [Panel1,Panel2] = 
   props.isArticleSelected ? 
   [
-    // ArticlesApiInfo,
-    // ArticlesApiInfo
+    // news[0],
+    // news[1]
     ArticleContentInfo[ArticleContentInfo.length-1],
     ArticleContentInfo[ArticleContentInfo.length-2]
   ] : 
@@ -50,6 +53,7 @@ function ArticleNewsLatestDiv(props) {
     NewsContentInfo[NewsContentInfo.length-1],
     NewsContentInfo[NewsContentInfo.length-2]
   ];
+}
 
   const [more,setMore] = useState(false);
   const [imgSrc,setImgSrc] = useState("down");
@@ -71,20 +75,31 @@ function ArticleNewsLatestDiv(props) {
   return (
     <div className='ArticleNewsLatestDiv'>
         <div className='LatestHeading'>Latest {type}</div>
+        {news[0] ? 
         <ArticleNewsLatestElement 
-          title = {Panel1.title}
-          info = {Panel1.info}
-          by = {Panel1.by}
-          url = {Panel1.url}
+          title = {news[0].title}
+          info = {news[0].content}
+          by = {news[0].author}
+          url = {news[0].url}
+          img = {news[0].urlToImage}
         />
+        :
+        null}
+        {news[1] ? 
         <ArticleNewsLatestElement 
-        title = {Panel2.title}
-        info = {Panel2.info}
-        by = {Panel2.by}
-        url = {Panel2.url}
+        title = {news[1].title}
+        info = {news[1].content}
+        by = {news[1].author}
+        url = {news[1].url}
+        img = {news[1].urlToImage}
         right="true"/>
+        :
+        null}
         <div className='LatestHeading'>More {type}</div>
-        <ArticlesNewsMore more={more} isArticleSelected={props.isArticleSelected}/>
+        {news.length!=0 ? 
+        <ArticlesNewsMore more={more} isArticleSelected={props.isArticleSelected} 
+        news={news}/>
+        :null}
         <div className='showMoreDiv'>
         <button className='showMoreBtn' id="showBtn" onClick={showMore}>
           <img src="/images/down_arrow.png" alt="" id="showImg"/>

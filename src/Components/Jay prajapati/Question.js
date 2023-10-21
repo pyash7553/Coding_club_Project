@@ -1,22 +1,35 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react';
 import './Question.css'
 import Upvote from './upvote.js';
+import { useLocation } from 'react-router-dom'
 import comment_icon from './comment_icon.js';
-
-//for answer of question
-import Give_answer from '../Question_answer/Give_answer';
-import { reply_close,reply_open } from '../Question_answer/Give_answer';
 
 
 export default function Question(props) {
-    let x = "This         is a \nString";
+    
+    // const location = useLocation();
+    // const searchParams = new URLSearchParams(location.search);
+    // const userID = searchParams.get('userID');
+    
+    const [x, setX] = useState("");
+    const [t, setT] = useState("");
+    
+    useEffect(()=>{
+        if(props.code){
+            const str = props.code.replace(/\\n/g,'\n');
+            setX(str);
+        }
+    },[props.code])
+
+    let bool = props.value;
+    console.log('at sender :' + props.value);
+
     return (
-        <>  
-            <Give_answer/>
+        <>
             <div className='q_class'>
                 <div id='asker'>
-                    <a href="#"><div id='pfp_div'><img src={props.pfp} alt="" id='pfpic' /></div></a>
-                    <div id='asker_id'><a href="#">{props.User_id}</a></div>
+                    <a href={`../profile?visitID=${props.asker_id}`}><div id='pfp_div'><img src={`data:Image/jpeg;base64,${props.pfp}`} alt="" id='pfpic' /></div></a>
+                    <div id='asker_id'><a href={`../profile?visitID=${props.asker_id}`}>{props.asker_username}</a></div>
                 </div>
                 <h2 id='Que_statement'>
                     {props.question}
@@ -28,19 +41,18 @@ export default function Question(props) {
                 <div className='snippet'>
 
                     <pre>
-                        <code>
-                            {props.code}
-                        </code>
+                        {/* {props.code} */}
+                        {x}
                     </pre>
                 </div>
                 <div id='feed_bar' className='d-flex'>
                     <div id='upvote_div'>
                         {/* <button>&</button> */}
-                        <Upvote></Upvote>
-                        {props.up_count}
+                        <Upvote value={bool} Id={props._id} type='q' count={props.up_count} user={props.userID}/>
+                        {/* {props.up_count} */}
                     </div>
                     <div id='comment_div'>
-                        <button id='com_button' onClick={reply_open}>{comment_icon()} Comment</button>
+                        <button id='com_button'>{comment_icon()} Comment</button>
                     </div>
                     <div id='date_div'>
                         {props.date}

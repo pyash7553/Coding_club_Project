@@ -5,13 +5,14 @@
 }
 
 .question_main{
-    position: fixed;
+    position: absolute;
     background-color: #710ec9;
     width: 50%;
     right: 25%;
     top: 5%;
     padding: 20px;
     border-radius: 8px;
+    display: none;
 }
 
 .question{
@@ -28,7 +29,7 @@
     right: 20px;
     border: 1.5px solid black;
     border-radius: 4px;
-    padding: 5px;
+    padding: 2px;
     cursor: pointer;
     display: inline-block;
 }

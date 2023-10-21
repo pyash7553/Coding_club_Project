@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import "./EditUserProfile.css";
 // import dp from "../images/profile.jpeg";
 import UserProfileInfo from "./UserProfileInfo";
@@ -6,8 +6,68 @@ import UserProfileInfo from "./UserProfileInfo";
 // import Filter_bar from "../additional_codes/Filter_bar";
 import UserProfileSkillTagElement from "./UserProfileSkillTagElement";
 import tagCollection from "./UserProfileTagsInfo";
+import { useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function EditUserProfile() {
+  const location = useLocation();
+
+  const searchParams = new URLSearchParams(location.search);
+    const userID = searchParams.get('userID');
+
+    const [userData,setUserData] = useState([]);
+    const [base64Img, setBase64Img] = useState("");
+    const [fname, setFname] = useState("");
+    const [lname, setLname] = useState("");
+    const [about, setAbout] = useState("");
+    const [userSkills, setUserSkills] = useState([]);
+    const [linkedIn, setLinkedin] = useState("");
+    const [leetcode, setLeetcode] = useState("");
+    const [codechef, setCodechef] = useState("");
+    const [programme, setProgramme] = useState("");
+    const [department, setDepartment] = useState("");
+    const [year, setYear] = useState("");
+    const [username, setUsername] = useState("");
+    const [email, setEmail] = useState("");
+    const [addSkillDisplay,setaddSkillDisplay] = useState(false);
+    const [usernameTitle,setUsernameTitle] = useState("");
+
+    const [currentPass,setCurrentPass] = useState("");
+    const [newPass,setNewPass] = useState("");
+    const [confirmNewPass,setConfirmNewPass] = useState("");
+
+    const [selectedTags,setSelectedTags] = useState([]);
+
+    useEffect( () => {
+      fetch(`/profile/user/?userID=${userID}`)
+      .then(
+        response => response.json()
+      )
+      .then(
+        data => {
+          setUserData(data[0]);
+          setBase64Img(`data:image/png;base64,${data[0].profileImg}`);
+          setFname(data[0].fname);
+          setLname(data[0].lname);
+          setAbout(data[0].about);
+          setLinkedin(data[0].linkedIn);
+          setLeetcode(data[0].leetcode);
+          setCodechef(data[0].codechef);
+          setProgramme(data[0].programme);
+          setDepartment(data[0].department);
+          setYear(data[0].year);
+          setUserSkills(data[0].skills);
+          setSelectedTags(data[0].skills);
+          setUsername(data[0].username);
+          setUsernameTitle(data[0].username);
+          setEmail(data[0].email);
+
+          console.log(base64Img);
+        }
+      )
+    },[])
+
+
   const ToggleStyle = {
     display: "flex",
   };
@@ -17,16 +77,6 @@ function EditUserProfile() {
   };
 
 
-  const [fname, setFname] = useState(UserProfileInfo.fname);
-  const [lname, setLname] = useState(UserProfileInfo.lname);
-  const [about, setAbout] = useState(UserProfileInfo.about);
-  const [linkedIn, setLinkedin] = useState(UserProfileInfo.linkedIn);
-  const [programme, setProgramme] = useState(UserProfileInfo.programme);
-  const [dept, setDept] = useState(UserProfileInfo.dept);
-  const [year, setYear] = useState(UserProfileInfo.year);
-  const [username, setUsername] = useState(UserProfileInfo.username);
-  const [email, setEmail] = useState(UserProfileInfo.email);
-  const [addSkillDisplay,setaddSkillDisplay] = useState(false);
 
   const [showEdit, setShowEdit] = useState(false);
   const [isEditSelected, setEditSelected] = useState({
@@ -54,7 +104,7 @@ function EditUserProfile() {
       PasswordInfo: "false",
       [name]: "true",
     });
-    console.log(isEditSelected);
+    // console.log(isEditSelected);
   }
 
   function changeFName(event) {
@@ -69,43 +119,243 @@ function EditUserProfile() {
   function changeLinkedIn(event) {
     setLinkedin(event.target.value);
   }
+  function changeLeetcode(event) {
+    setLeetcode(event.target.value);
+  }
+  function changeCodechef(event) {
+    setCodechef(event.target.value);
+  }
   function changeUsername(event) {
     setUsername(event.target.value);
   }
   function changeEmail(event) {
     setEmail(event.target.value);
   }
-  function savePersonal(event) {
-    UserProfileInfo.fname = fname;
-    event.preventDefault();
-
+  function changeCurrentPass(event) {
+    setCurrentPass(event.target.value);
+  }
+  function changeNewPass(event) {
+    setNewPass(event.target.value);
+  }
+  function changeConfirmNewPass(event) {
+    setConfirmNewPass(event.target.value);
   }
 
   function addSkillTags(tagElement) {
-    if(tagElement.use==true)
-    {
-      return <UserProfileSkillTagElement 
-        tag = {tagElement.name}
-        use = {tagElement.use}
-      />
-    }
+    
+    return <UserProfileSkillTagElement 
+      tag = {tagElement}
+      click = {false}
+    />
   }
-  function addAllSkillsTags(tagElement) {
   
-    
-      return <UserProfileSkillTagElement 
-        tag = {tagElement.name}
-        use = {tagElement.use}
-        id = {tagElement.id}
+  function addAllSkillsTags(tagElement) {
+
+    return (
+      <UserProfileSkillTagElement
+        userSkills={userSkills}
+        tag={tagElement.name}
+        use={userSkills.includes(tagElement.name)}
+        id={tagElement.id}
+        click = {true}
+        userID = {userData._id}
+        selectHandler = {onSelection}
       />
-    
+    );
   }
-  function toggleAddSkills(event){
-    setaddSkillDisplay(!addSkillDisplay);
+
+  function onSelection(name) {
+    setSelectedTags(prev => {
+      if (prev.includes(name)) {
+        return prev.filter(tag => tag !== name); 
+      } else {
+        return [...prev, name]; 
+      }
+    });
+    console.log('fff');
+    console.log(selectedTags);
+  }
+  
+  
+  const sendDataToBackend = (data) => {
+    fetch(`/editprofile/userSkills/?userID=${userID}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ userSkills: data }),
+    })
+      .then(response => response.json())
+      .then(data => {
+        console.log('Success:', data);
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
+  };
+
+  function saveUserProfile(event){
+
+    const personalData = {
+      fname : fname,
+      lname : lname,
+      about : about,
+      linkedIn : linkedIn,
+      leetcode : leetcode,
+      codechef : codechef,
+      programme : programme,
+      department : department,
+      year : year
+    }
+
+    fetch(`/editprofile/personal/?userID=${userID}`,{
+      method : 'POST',
+      headers: {
+        'Content-Type':'application/json',
+      },
+      body : JSON.stringify(personalData)
+    })
+    .then(response => response.json())
+    .then(data => {
+      console.log("personal" , data);
+      alert("Profile Updated Successfully!!")
+    })
+    .catch(err => {
+      console.log(err);
+    })
+    event.preventDefault();
+  }
+
+  function saveAccount(event){
+    const accountData = {
+      username : username,
+      email : email
+    }
+
+    fetch(`/editprofile/account/?userID=${userID}`,{
+      method : 'POST',
+      headers: {
+        'Content-Type':'application/json',
+      },
+      body : JSON.stringify(accountData)
+    })
+    .then(response => response.json())
+    .then(data => {
+      if(data.error){
+        alert(data.error)
+        setUsername(userData.username);
+        setEmail(userData.email);
+      }
+      else
+      {
+        alert(data.message);
+        setUsernameTitle(username);
+      }
+    })
+    .catch(err => {
+      console.log(err);
+    })
+
+
+    event.preventDefault();
+  }
+  
+  function savePassword(event){
+    if(currentPass!=userData.password)
+    {
+      alert("Invalid current password!");
+      setCurrentPass("");
+      setNewPass("");
+      setConfirmNewPass("");
+    }
+    else if(currentPass==newPass)
+    {
+      alert("New Password cannot be same as current password!");
+      setConfirmNewPass("");
+      setNewPass("");
+    }
+    else if(newPass!=confirmNewPass)
+    {
+      alert("Re-Enter new password!!");
+      setConfirmNewPass("");
+    }
+    else{
+      const passwordData = {
+        newPass : newPass
+      }
+
+      fetch(`/editprofile/password/?userID=${userID}`,{
+        method : 'POST',
+        headers: {
+          'Content-Type':'application/json',
+        },
+        body : JSON.stringify(passwordData)
+      })
+      .then(response => response.json())
+      .then(data => {
+        alert("Password updated successfully!")
+        setCurrentPass("");
+        setNewPass("");
+        setConfirmNewPass("");
+      })
+    }
 
     event.preventDefault();
   }
 
+  function toggleAddSkills(event){
+    setaddSkillDisplay(!addSkillDisplay);
+    sendDataToBackend(selectedTags);
+    setUserSkills(selectedTags);
+
+    event.preventDefault();
+  }
+
+  function programmeChangeHandler(event){
+    setProgramme(event.target.value);
+  }
+  function departmentChangeHandler(event){
+    setDepartment(event.target.value);
+  }
+  function yearChangeHandler(event){
+    setYear(event.target.value);
+  }
+
+
+  // const [showEdit, setShowEdit] = useState(false);
+
+  const handleImageChange = (id) => {
+    const input = document.createElement('input');
+    input.type = 'file';
+    input.accept = 'image/*';
+    input.onchange = (event) => {
+      const file = event.target.files[0];
+      const reader = new FileReader();
+      reader.onload = () => {
+        setBase64Img(reader.result);
+        const base64String = reader.result.split(',')[1];
+        console.log(base64String);
+        fetch(`/editprofile/profileImg/?userID=${userID}`,{
+          method : 'POST',
+          headers : {
+            'Content-Type' : 'application/json'
+          },
+          body : JSON.stringify({profileImg : base64String})
+        })
+        .then(response => response.json())
+        .then(data => {
+
+          // console.log(base64String);
+        })
+      };
+      if (file) {
+        reader.readAsDataURL(file);
+      }
+    };
+    input.click();
+  };
+
+  // const base64Img = ;
 
   return (
     <div className="EditUserProfile">
@@ -115,13 +365,15 @@ function EditUserProfile() {
           onMouseEnter={EditDP}
           onMouseLeave={EditDP}
         >
-          <img src="/images/profile.jpeg" alt="" />
+          <img src={base64Img} id="dp" className="EditProfileImg" />
           <div
             className="EditProfileImgChange"
             id="editDP"
             style={showEdit ? ToggleStyle : null}
           >
-            <button className="EditProfileImgChangeButton">
+            <button 
+              onClick={() => handleImageChange("dp")}
+              className="EditProfileImgChangeButton">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="30"
@@ -139,7 +391,7 @@ function EditUserProfile() {
             </button>
           </div>
         </div>
-        <div className="EditProfileUsernameDisplay">jayfanse29</div>
+        <div className="EditProfileUsernameDisplay">@{usernameTitle}</div>
       </div>
 
       <div className="EditProfileMainPanel">
@@ -152,11 +404,12 @@ function EditUserProfile() {
           }
         >
           <h3>Perosnal Info</h3>
-          <form action="">
+          <form>
             <div className="EditFormFrame">
               <span>First Name</span>
               <span>:</span>
               <input
+                name="fname"
                 id="fname"
                 type="text"
                 placeholder="First Name here"
@@ -167,6 +420,7 @@ function EditUserProfile() {
               <span>Last Name</span>
               <span>:</span>{" "}
               <input
+                name="lname"
                 type="text"
                 value={lname}
                 onChange={changeLName}
@@ -175,7 +429,7 @@ function EditUserProfile() {
               <span>About</span>
               <span>:</span>{" "}
               <textarea
-                name=""
+                name="about"
                 id=""
                 cols="15"
                 rows="6"
@@ -185,12 +439,20 @@ function EditUserProfile() {
               ></textarea>
               <span>LinkedIn Profile</span>
               <span>:</span>{" "}
-              <input type="text" value={linkedIn} onChange={changeLinkedIn} />
+              <input type="text" value={linkedIn} onChange={changeLinkedIn} name="linkedIn"/>
+              <span>LeetCode Profile</span>
+              <span>:</span>{" "}
+              <input type="text" value={leetcode} onChange={changeLeetcode} name="codechef"/>
+              <span>Codechef Profile</span>
+              <span>:</span>{" "}
+              <input type="text" value={codechef} onChange={changeCodechef} name="leetcode"/>
+
+
               <span style={{ border: "none" }}>Skills</span>
               <span style={{ border: "none" }}>:</span>{" "}
               <div className="skillTagContainer"
               style={addSkillDisplay?{display:"none"} : {display:"flex"}}>
-                {tagCollection.map(addSkillTags)}
+                {userSkills.map(addSkillTags)}
                 <button className='UserProfileAddSkillTag'
                 onClick={toggleAddSkills}
                 >
@@ -203,12 +465,12 @@ function EditUserProfile() {
                 <button className='UserProfileAddSkillTag'
                 onClick={toggleAddSkills}
                 >
-                  Save
+                  Done
                 </button>
 
                 </div>
               <div className="EditSaveButtonDiv">
-                <button onClick={savePersonal}>Save</button>
+                <button onClick={saveUserProfile}>Save</button>
               </div>
             </div>
           </form>
@@ -226,16 +488,16 @@ function EditUserProfile() {
             <div className="EditFormFrame">
               <span>Username</span>
               <span>:</span>
-              <input type="text" value={username} onChange={changeUsername} />
+              <input type="text" value={username} onChange={changeUsername}/>
               <span>E-mail</span>
               <span>:</span>
-              <input type="text" value={email} onChange={changeEmail} />
+              <input type="text" value={email} onChange={changeEmail}/>
               <div
                 className="EditSaveButtonDiv"
                 style={{ justifyContent: "space-between" }}
               >
-                <button>Logout</button>
-                <button>Save</button>
+                <button><Link to="/">Logout</Link></button>
+                <button type="submit" onClick={saveAccount}>Save</button>
               </div>
             </div>
           </form>
@@ -253,7 +515,10 @@ function EditUserProfile() {
             <div className="EditFormFrame">
               <span>Programme</span>
               <span>:</span>
-              <select>
+              <select
+                value={programme}
+                onChange={programmeChangeHandler}
+              >
                 <option>Bachelor's of Engineering</option>
                 <option>Master's of Engineering</option>
                 <option>Bachelor's of Computer Applications</option>
@@ -261,21 +526,27 @@ function EditUserProfile() {
               </select>
               <span>Department</span>
               <span>:</span>
-              <select>
+              <select
+                value={department}
+                onChange={departmentChangeHandler}
+              >
                 <option>Computer Science and Engineering</option>
                 <option>Electronics and Communication Engineering</option>
                 <option>Electrical Engineering</option>
               </select>
               <span>Graduation Year</span>
               <span>:</span>
-              <select>
-                <option>2023</option>
-                <option>2024</option>
-                <option>2025</option>
-                <option>2026</option>
+              <select
+              value={year}
+              onChange={yearChangeHandler}
+              >
+                <option>"2023"</option>
+                <option>"2024"</option>
+                <option>"2025"</option>
+                <option>"2026"</option>
               </select>
               <div className="EditSaveButtonDiv">
-                <button>Save</button>
+                <button onClick={saveUserProfile}>Save</button>
               </div>
             </div>
           </form>
@@ -292,15 +563,15 @@ function EditUserProfile() {
             <div className="EditFormFrame">
               <span>Current Password</span>
               <span>:</span>
-              <input type="text" />
+              <input type="text" value={currentPass} onChange={changeCurrentPass} placeholder="enter current password"/>
               <span>New Password</span>
               <span>:</span>
-              <input type="text" />
+              <input type="text" value={newPass} onChange={changeNewPass} placeholder="enter new password"/>
               <span>Confirm Password</span>
               <span>:</span>
-              <input type="text" />
+              <input type="text" value={confirmNewPass} onChange={changeConfirmNewPass} placeholder="re-enter new password"/>
               <div className="EditSaveButtonDiv">
-                <button>Save</button>
+                <button onClick={savePassword}>Save</button>
               </div>
             </div>
           </form>

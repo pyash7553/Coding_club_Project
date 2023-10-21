@@ -11,10 +11,10 @@ function ArticleNewsLatestElement(props) {
   }
 
   return (
-    <a href="#" alt="" className="ArticleNewsLink">
+    <a href={props.url} target="_blank" alt="" className="ArticleNewsLink">
     <div className="ArticleNewsLatestElementFlex" style={props.right ? flexStyle : null} >
     <div className="ArticleImgDiv">
-        <img src={props.url} className="ArticleNewsLatestImg"></img>
+        <img src={props.img} className="ArticleNewsLatestImg"></img>
       </div>
       <div className="ArticleNewsLatestElementFlex2">
         <div className="ArticleNewsLatestElementTitle">{props.title}</div>
@@ -22,7 +22,7 @@ function ArticleNewsLatestElement(props) {
           <div className="LatestInfoGradient"></div>
           {props.info}
         </div>
-        <div className="ArticleNewsLatestElementBy">{props.by}</div>
+        <div className="ArticleNewsLatestElementBy">~{props.by}</div>
       </div>
     </div>
     </a>

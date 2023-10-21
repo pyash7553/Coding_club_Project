@@ -3,10 +3,12 @@ import "./ResourcesBookElement.css"
 
 function ResourcesBookElement(props) {
 
+  const base64Img = `data:image/png;base64,${props.thumbnail}`;
+
   return (
     <div className="BookElement">
         <div className="BookImageDiv">
-        <img src={props.url} alt=""/>
+        <img src={base64Img} alt="" height="300vh" width="100vh"/>
         </div>
         <div className="BookElementTitle">{props.title}</div>
         <div className="BookElementInfo">

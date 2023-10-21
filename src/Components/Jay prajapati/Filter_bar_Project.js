@@ -1,7 +1,6 @@
 import React from 'react'
 import './Filter_bar.css'
-import { question_open } from '../Question_answer/Ask_Question';
-// import { addproject_open ,  } from '../Innercomp/AddProject';
+import { addproject_open ,  } from '../Innercomp/AddProject';
 // import {question_open} from '../Question_answer/Ask_Question';
 export default function Filter_bar() {
 
@@ -24,7 +23,7 @@ export default function Filter_bar() {
 	return (
 		<div className='filter navbar'>
 			{/* <Ask_Question/> */}
-			<button className="borderbutton" onClick={question_open}>Add Yours</button>
+			<button className="borderbutton" onClick={addproject_open}>Add Yours</button>
 			<div className="select1">
 				<p>
 					<button id="art" className="borderbutton" type="button" data-bs-toggle="collapse"

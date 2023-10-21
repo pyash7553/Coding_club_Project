@@ -2,22 +2,22 @@ const tagCollection = [
     {
         id : 1,
         name : "C",
-        use : true
+        use : false
     },
     {
         id : 2,
         name : "C++",
-        use : true
+        use : false
     },
     {
         id : 3,
         name : "JAVA",
-        use : true
+        use : false
     },
     {
         id : 4,
         name : "DSA",
-        use : true
+        use : false
     },
     {
         id : 5,
@@ -27,7 +27,7 @@ const tagCollection = [
     {
         id : 6,
         name : "ReactJS",
-        use : true
+        use : false
     },
     {
         id : 7,
@@ -36,29 +36,9 @@ const tagCollection = [
     },
     {
         id : 8,
-        name : "NodeJS",
+        name : "Problem solving",
         use : false
-    },
-    {
-        id : 9,
-        name : "NodeJS",
-        use : false
-    },
-    {
-        id : 10,
-        name : "NodeJS",
-        use : false
-    },
-    {
-        id : 11,
-        name : "NodeJS",
-        use : false
-    },
-    {
-        id : 12,
-        name : "NodeJS",
-        use : false
-    },
+    }
 ];
 
 export default tagCollection;

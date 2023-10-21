@@ -62,6 +62,10 @@
 .UPBioInfo img{
     width: 30px;
 }
+.UPBioInfo a{
+    color: rgb(0, 238, 255);
+    text-decoration: underline;
+}
 
 .UPPersonalInfo{
     display: flex;
@@ -82,10 +86,12 @@
 
 .UPMainActivityInfo{
     display: flex; 
+    flex-direction: column;
     justify-content: center;
     height: 100%;
     width: 100%;
     position: relative;
+    /* border: 2px solid yellow; */
 }
 
 .UPMainNoActivity{
@@ -94,6 +100,7 @@
     height: 40vh;
     width: 55vh;
     /* border: 2px solid red; */
+    margin: auto;
     background-image: url("/public/images/profileProjects.png");
     background-size: contain;
     background-repeat: no-repeat;
@@ -113,4 +120,22 @@
     padding: 3px 15px;
     height: fit-content;
     display: none;
+}
+
+
+.contactGrid{
+    display: grid;
+    margin: 2vh 0vh;
+    grid-template-columns: repeat(4,1fr);
+    /* border: 2px solid red; */
+    border-top: 2px solid white;
+}
+
+.contactGrid a{
+    /* border: 2px solid greenyellow; */
+    display: flex;
+    justify-content: center;
+    padding-top: 1vh;
+    /* border-right: 2px solid white;
+    border-left: 2px solid white; */
 }

@@ -33,7 +33,6 @@
 }
 
 .completed_contest_btn button{
-    color: rgb(102, 7, 191);
     background: white;
     border: 0;
     border-radius: 5px;
@@ -45,6 +44,7 @@
 
 .completed_contest_btn a{
     text-decoration: none;
+        color: rgb(102, 7, 191) !important;
 }
 
 .completed_contest_btn button:hover{

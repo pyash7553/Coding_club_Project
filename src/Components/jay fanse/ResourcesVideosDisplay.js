@@ -3,11 +3,17 @@ import "./ResourcesVideosDisplay.css"
 import ResourcesVideosElement from './ResourcesVideosElement'
 import ResourcesVideoInfo from './ResourcesVideoInfo'
 
-function ResourcesVideosDisplay() {
+function ResourcesVideosDisplay(props) {
+
+  const videoLen = props.videos.length;
+  const bgStyle = {
+      backgroundImage : "none",
+      height : "fit-content"
+  }
 
     function addVideo(videoElement){
         return <ResourcesVideosElement 
-        thumbnail = {videoElement.thumbnail}
+        link = {videoElement.link}
         title = {videoElement.title}
         channel = {videoElement.channel}
         source = {videoElement.source}
@@ -15,8 +21,8 @@ function ResourcesVideosDisplay() {
     }
 
   return (
-      <div className='ResourcesVideosDisplay'>
-        {ResourcesVideoInfo.map(addVideo)}
+      <div className='ResourcesVideosDisplay' style={videoLen!=0 ? bgStyle : null}>
+        {props.videos ? props.videos.map(addVideo) : null}
     </div>
   )
 }
